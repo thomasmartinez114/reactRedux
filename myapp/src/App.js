@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Ninjas from './Ninjas';
-import AddNinja from './AddNinja';
+import Ninjas from './Ninjas'
+import AddNinja from './AddNinja'
 
 class App extends Component {
   state = {
@@ -11,21 +11,29 @@ class App extends Component {
     ]
   }
   addNinja = (ninja) => {
-      ninja.id = Math.random();
-      let ninjas = [...this.state.ninjas, ninja]; //making copy of the ninjas array above
-      this.setState({
-        ninjas: ninjas
-      })
+    ninja.id = Math.random();
+    let ninjas = [...this.state.ninjas, ninja];
+    this.setState({
+      ninjas: ninjas
+    });
+  }
+  deleteNinja = (id) => {
+    // console.log(id);
+    let ninjas = this.state.ninjas.filter(ninja => {
+      return ninja.id !== id
+    });
+    this.setState({
+      ninjas: ninjas
+    });
   }
   render() {
     return (
-      <div className='App'>
-        <h1>My first React app!</h1>
-        <p>Welcome :)</p>
-        <Ninjas ninjas={this.state.ninjas}/>
+      <div className="App">
+        <h1>My first React app</h1>
+        <Ninjas ninjas={this.state.ninjas} deleteNinja={this.deleteNinja} />
         <AddNinja addNinja={this.addNinja} />
       </div>
-      );
+    );
   }
 }
 
