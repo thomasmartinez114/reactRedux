@@ -1,9 +1,7 @@
 import React from 'react'
+import Rainbow from '../hoc/Rainbow'
 
 const Contact = (props) => {
-  // setTimeout(() => {
-  //   props.history.push('/about')
-  // }, 2000);
   return (
     <div>
       <div className="container">
@@ -14,4 +12,4 @@ const Contact = (props) => {
   )
 }
 
-export default Contact
+export default Rainbow(Contact)
